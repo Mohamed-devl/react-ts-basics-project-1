@@ -1,36 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ProductCards from "./components/ProductCards";
 
+import { productList } from "./data";
 
+import Modal from "./components/ui/modal";
+import { useState } from "react";
+import  Button  from "./components/ui/Button";
+const App = () => {
 
-function App() {
-  const [count, setCount] = useState(0)
+/* Stat */
 
+const [isOpen, setIsOpen] = useState(false);
+
+function open() {
+    setIsOpen(true);
+  }
+
+  function close() {
+    setIsOpen(false);
+  }
+  // Renders
+  const renderProductList = productList.map((product) => (
+    <ProductCards key={product.id} product={product} />
+  ));
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className="container mx-auto px-4">
+      <Button
+        className="text-center p-1.5 rounded-md w-full text-white font-bold bg-blue-500 hover:bg-indigo-800"
+        onClick={open}
+      >
+        ADD
+      </Button>
+      <div className=" grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-2">
+        {renderProductList}
       </div>
-      <h1 className="text-3xl font-bold underline"> Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      <Modal isOpen={isOpen} close={close} title="ADD A NEW PRODUCT">
+        <div className="flex space-x-2">
+          <Button className="text-center p-1.5 rounded-md w-full text-white font-bold bg-blue-500 hover:bg-indigo-800">
+            SUBMIT
+          </Button>
+          <Button className="text-center p-1.5 rounded-md w-full text-white font-bold bg-red-500 hover:bg-red-800">
+            CANCEL
+          </Button>
+        </div>
+      </Modal>
+    </main>
   );
 }
 
