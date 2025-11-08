@@ -24,13 +24,11 @@ const Modal= ({isOpen, close, title, children}: Iprops) =>{
             >
               <DialogTitle
                 as="h3"
-                className="text-base/7 font-medium"
+                className="text-base/7 tracking-wider text-gray-900 cursor-pointer font-bold "
               >
-               {title}
+                {title}
               </DialogTitle>
-              <div className="mt-4">
-                {children}
-              </div>
+              <div className="mt-4">{children}</div>
             </DialogPanel>
           </div>
         </div>

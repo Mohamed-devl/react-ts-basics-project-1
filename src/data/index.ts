@@ -1,6 +1,6 @@
 // src/data/data.ts
 import { v4 as uuid } from "uuid";
-import type { IProduct } from "../interfaces";
+import type { IformInputsList, IProduct } from "../interfaces";
 
 export const productList: IProduct[] = [
   {
@@ -117,5 +117,32 @@ export const productList: IProduct[] = [
       imageURL:
         "https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg",
     },
+  },
+];
+
+export const formInputsList: IformInputsList[] = [
+  {
+    id: "title",
+    name: "title",
+    label: "Product Title",
+    type: "text",
+  },
+  {
+    id: "description",
+    name: "description",
+    label: "Product Description",
+    type: "text",
+  },
+  {
+    id: "price",
+    name: "price",
+    label: "Product Price",
+    type: "number",
+  },
+  {
+    id: "img",
+    name: "imgUrl",
+    label: "Product Image URL",
+    type: "text",
   },
 ];
