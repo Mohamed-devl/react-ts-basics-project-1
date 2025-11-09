@@ -1,6 +1,6 @@
 // src/data/data.ts
 import { v4 as uuid } from "uuid";
-import type { IformInputsList, IProduct } from "../interfaces";
+import type { IFormInput, IProduct } from "../interfaces";
 
 export const productList: IProduct[] = [
   {
@@ -23,14 +23,13 @@ export const productList: IProduct[] = [
     title: "Leather Shoes",
     description:
       "Elegant leather shoes perfect for formal and casual occasions.",
-    imageURL:
-      "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800",
+    imageURL: "https://images.pexels.com/photos/19090/pexels-photo.jpg",
     price: "220",
     colors: ["brown", "black", "tan"],
     category: {
       name: "Shoes",
       imageURL:
-        "https://images.pexels.com/photos/267320/pexels-photo-267320.jpeg?auto=compress&cs=tinysrgb&w=800",
+        "https://images.pexels.com/photos/267320/pexels-photo-267320.jpeg",
     },
   },
 
@@ -120,7 +119,7 @@ export const productList: IProduct[] = [
   },
 ];
 
-export const formInputsList: IformInputsList[] = [
+export const formInputsList: IFormInput[] = [
   {
     id: "title",
     name: "title",
@@ -134,15 +133,15 @@ export const formInputsList: IformInputsList[] = [
     type: "text",
   },
   {
+    id: "img",
+    name: "imageURL",
+    label: "Product Image URL",
+    type: "text",
+  },
+  {
     id: "price",
     name: "price",
     label: "Product Price",
     type: "number",
-  },
-  {
-    id: "img",
-    name: "imgUrl",
-    label: "Product Image URL",
-    type: "text",
   },
 ];

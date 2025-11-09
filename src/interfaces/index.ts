@@ -10,10 +10,9 @@ export interface IProduct {
     imageURL: string;
   };
 }
-export interface IformInputsList {
+export interface IFormInput {
   id?: string | undefined;
-  name: string;
+  name: "title" | "description" | "imageURL" | "price";
   label: string;
   type: string;
-  
 }

@@ -4,24 +4,48 @@ import { formInputsList, productList } from "./data";
 
 import Modal from "./components/ui/modal";
 import { useState } from "react";
+import type { ChangeEvent} from "react";
 import  Button  from "./components/ui/Button";
 import Input from "./components/ui/input";
+import type { IProduct } from "./interfaces";
+
 
 
 
 const App = () => {
 
 /* Stat */
+const [product, setProduct] = useState<IProduct>({
+  title: "",
+  description: "",
+  imageURL: "",
+  price: "",
+  colors: [],
+  category:{
+    name: "",
+    imageURL: "",
+  }
 
+});
 const [isOpen, setIsOpen] = useState(false);
+// render
+const open=() =>setIsOpen(true);
+  
 
-function open() {
-    setIsOpen(true);
+  const close= () =>setIsOpen(false);
+  
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) =>{
+    const {value, name} = event.target;
+
+    setProduct({
+            ...product,
+      [name]: value,
+    
+    });
+
   }
 
-  function close() {
-    setIsOpen(false);
-  }
+
   // Renders
   const renderProductList = productList.map((product) => (
     <ProductCards key={product.id} product={product} />
@@ -34,7 +58,7 @@ function open() {
       >
         {input.label}
       </label>
-      <Input type={input.type} name={input.name} id={input.id} placeholder={input.label}/>
+      <Input type={input.type} name={input.name} id={input.id} placeholder={input.label} value={product[input.name]} onChange={onChangeHandler}/>
     </div>
   ));
   return (
